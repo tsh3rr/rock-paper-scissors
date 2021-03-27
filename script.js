@@ -63,13 +63,52 @@ function playRound() {
         winner = "tie";
     }
     //Putting out result as text and as return (player or computer)
-    console.log(winner);
+    //console.log(winner);
     return winner;
 }
 
-playRound();
+//playRound();
 
 // game
 // A function that plays 5 games 
-// While loop that goes 5 times or until score is 3 - 0 (because the oponent can not catch up at this point)
-// Return the result in text after every round
+
+function game(){
+    //Definition of variables
+    let i, scorecomputer=0, scoreplayer=0, result, score;
+    // For loop that goes 5 times
+    for (i=1; i<=5 ; i++){
+        score = playRound();
+        console.log("Round: ", i)
+        console.log(score);
+        // Return the result in text after every round and save the score to variables scorecomputer and scoreplayer
+        //if computer wins round
+        if (score == "computer"){
+            scorecomputer ++;
+            console.log("Computer wins round. Score for player:", scoreplayer,"Score for computer:", scorecomputer);
+        };
+        //if player wins round
+        if (score == "player"){
+            scoreplayer ++;
+            console.log("Player wins round. Score for player:", scoreplayer,"Score for computer:", scorecomputer);
+        };
+    }
+    //"Decision" who has won
+    if (scorecomputer > scoreplayer){
+        result = "computer";
+    };
+    if (scorecomputer < scoreplayer){
+        result = "player";
+    };
+    if (scorecomputer == scoreplayer){
+        result = "tie";
+    };
+    //Proclamation of result
+    if (result == "tie") {
+        console.log(result, " what a waste of time, lest play again!", scoreplayer, "to", scorecomputer);
+    } else {
+    console.log(result, " has won the game!", scoreplayer, "to", scorecomputer);
+    }
+    return result;
+}
+
+game();
